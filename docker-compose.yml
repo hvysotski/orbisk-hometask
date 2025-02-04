@@ -7,12 +7,9 @@ services:
     volumes:
       - ./data:/data
 
-    # Expose port 5000 for connecting from outside of the Docker container
+    # Expose port 8000 for connecting from outside of the Docker container
     ports:
-      - target: 5000
-        published: 5000
-        protocol: tcp
-        mode: host
+      - "8000:8000"
 
   scheduler:
     build: scheduler

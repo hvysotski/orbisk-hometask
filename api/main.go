@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	DefaultPort           = 5000
+	DefaultPort           = 8000
 	DefaultFileCreateMode = 0700
 )
 
@@ -67,7 +67,7 @@ func getResults(c *fiber.Ctx) error {
 }
 
 // getResult stores a new result
-func postResult(c *fiber.Ctx) error {
+func PostResult(c *fiber.Ctx) error {
 	content := c.Body()
 
 	if err := testIfValidJSON(content); err != nil {
@@ -115,12 +115,10 @@ func testIfValidJSON(value []byte) error {
 func makeSurePathExists(path string) error {
 	if _, err := os.Stat(path); errors.Is(err, os.ErrNotExist) {
 		err = os.MkdirAll(path, DefaultFileCreateMode)
-
 		if err != nil {
 			return err
 		}
 	}
-
 	return nil
 }
 
